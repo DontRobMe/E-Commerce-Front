@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; // Importe HttpClientModule
 import { AppRoutingModule } from './app.routes';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app-route/app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -16,7 +16,7 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule, // Ajoute HttpClientModule ici
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

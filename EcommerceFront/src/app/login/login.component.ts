@@ -7,19 +7,18 @@ import { UserService } from '../user.services';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  Email: string = '';
+  Password: string = '';
+  error: string = '';
 
   constructor(private userService: UserService) {}
 
   onSubmit(): void {
-    this.userService.login(this.username, this.password)
-      .subscribe(response => {
+    this.userService.login(this.Email, this.Password).subscribe(response => {
         console.log('Connexion réussie:', response);
-        // Rediriger vers une autre page ou afficher un message de succès
       }, error => {
         console.error('Erreur lors de la connexion:', error);
-        // Afficher un message d'erreur à l'utilisateur
+        this.error = error.error;
       });
   }
 }
