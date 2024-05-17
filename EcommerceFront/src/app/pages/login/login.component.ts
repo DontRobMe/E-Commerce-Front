@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../user.services';
+import { UserService } from '../../services/users/user.service';
 
 @Component({
   selector: 'app-login',

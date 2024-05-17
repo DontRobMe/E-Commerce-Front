@@ -1,0 +1,89 @@
+<body class="bg-black text-white">
+<div class="px-4">
+  <header class="flex justify-between items-center py-4">
+    <div class="flex items-center">
+      <img src="./assets/logos/logo-horizontal.svg" alt="Logo" class="mr-8 size-1/12"/>
+      <div class="bg-black text-white p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4 relative">
+          <div class="relative group">
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-pc.svg" alt="PC" class="h-6 w-6">
+              <span>PC</span>
+              <span class="material-icons">expand_more</span>
+            </button>
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="flex items-center space-x-2">
+                <img src="./assets/logos/icon-pc.svg" alt="PC" class="h-6 w-6">
+                <span>PC</span>
+              </div>
+              <!-- Ajoutez les autres options de menu de la même manière -->
+            </div>
+          </div>
+          <div class="relative group">
+
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-play.svg" alt="PC" class="h-6 w-6">
+              <span>Playstation</span>
+              <span class="material-icons">expand_more</span>
+            </button>
+
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="flex items-center space-x-2">
+                <img src="./assets/logos/icon-play.svg" alt="PC" class="h-6 w-6">
+                <span>play</span>
+              </div>
+
+            </div>
+          </div>
+          <div class="relative group">
+
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-xbx.svg" alt="PC" class="h-6 w-6">
+              <span>Xbox</span>
+              <span class="material-icons">expand_more</span>
+            </button>
+
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="flex items-center space-x-2">
+                <img src="./assets/logos/icon-xbx.svg" alt="PC" class="h-6 w-6">
+                <span>Xbox</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <button class="bg-orange-500 p-3 rounded-full">
+          <span class="material-icons text-white">search</span>
+        </button>
+      </div>
+      <div class="bg-zinc-800 rounded-full w-fit">
+        <img src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
+      </div>
+    </div>
+  </header>
+
+  <div class="relative mt-8">
+    <img src="https://gaming-cdn.com/img/products/8253/hcover/1400x500/8253.jpg?v=1714401891" alt="Main Game Banner"
+         class="w-full h-auto"/>
+    <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-5 flex items-center justify-between p-8">
+      <div>
+        <h1 class="text-4xl font-bold">Manor Lords</h1>
+        <p class="text-xl bg-red-600 inline-block px-3 py-1 rounded">-50%</p>
+        <p class="text-3xl mt-2">20.17€</p>
+      </div>
+      <button class="text-lg bg-red-600 hover:bg-red-700 py-2 px-4 rounded">Buy Now</button>
+    </div>
+  </div>
+
+  <div *ngFor="let product of products" class="min-w-[300px] rounded-lg overflow-hidden shadow-lg relative">
+    <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-full object-cover" />
+    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
+      <h3 class="text-lg">{{ product.name }}</h3>
+      <p>{{ product.price }}€</p>
+    </div>
+  </div>
+
+
+
+</div>
+</body>
