@@ -8,16 +8,15 @@ import { Product } from '../../services/produits/produit.service';
 })
 export class AddProductComponent {
   selectedImage: File | null = null;
-  imagePreview: string | ArrayBuffer | null = null;  error: string = '';
+  imagePreview: string | ArrayBuffer | null = null;
+  error: string = '';
   newProduct: Product = {
-    id: 0,
     name: '',
     description: '',
     price: 0,
     stock: 0,
     category: '',
     rating: 0,
-    keys: '',
     image: '',
   };
 
@@ -36,23 +35,16 @@ export class AddProductComponent {
       }
     );
   }
-  handleImageInput(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.selectedImage = file;
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if(e.target){
-          this.imagePreview = e.target.result;
-        }
-        else {
-          console.error('Error reading file.');
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.error('No image selected.');
-    }
+  onImageSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const file: File | null = (target.files as FileList)[0] || null;
+    this.selectedImage = file;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+      this.newProduct.image = reader.result as string;
+    };
+    reader.readAsDataURL(file as Blob);
   }
 }
