@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { UserService } from '../user.services';
+import { UserService } from '../../services/users/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   name: string = '';
@@ -22,9 +21,8 @@ export class RegisterComponent {
       console.log('Inscription réussie:', response);
     }, error => {
       console.error('Erreur lors de l\'inscription:', error);
-      this.error = error.error; // Stocker le message d'erreur dans la variable error
+      this.error = error.error;
     });
 
-    // this.userService.register(this.name,this.lastname, this.email, this.address, this.password, this.birth).subscribe(response => {console.log(response)});
   }
 }
