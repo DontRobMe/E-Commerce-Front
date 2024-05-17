@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import {AddProductComponent} from "./pages/addgame/addgame.component";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {AddProductComponent} from "./pages/addgame/addgame.component";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]
