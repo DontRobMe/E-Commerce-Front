@@ -6,27 +6,33 @@
   <div class="w-full max-w-lg p-8 bg-zinc-800 rounded-lg shadow-xl">
     <h2 class="text-2xl font-bold mb-6">Register</h2>
     <form (ngSubmit)="onSubmit()">
-      <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="grid grid-cols-2 gap-4 mb-4 form-group">
         <input
           type="email"
           placeholder="Email"
+          id="email"
+          name="email"
           class="bg-zinc-700 p-3 rounded outline-none col-span-2"
           [(ngModel)]="email" required>
         <input
           type="password"
           placeholder="Votre mot de passe"
+          id="password"
+          name="password"
           class="bg-zinc-700 p-3 rounded outline-none"
           [(ngModel)]="password" required>
         <button class="bg-transparent text-white">
           <img src="https://placehold.co/20x20" alt="Show password" class="inline" />
         </button>
-        <input type="text" placeholder="Prénom" class="bg-zinc-700 p-3 rounded outline-none" [(ngModel)]="lastname" required>
-        <input type="text" placeholder="Nom" class="bg-zinc-700 p-3 rounded outline-none" [(ngModel)]="name" required>
+        <input type="text" placeholder="Prénom" id="lastname" name="lastname"class="bg-zinc-700 p-3 rounded outline-none form-control" [(ngModel)]="lastname" required>
+        <input type="text" id="name" name="name"  placeholder="Nom" class="bg-zinc-700 p-3 rounded outline-none form-control" [(ngModel)]="name" required>
       </div>
       <div class="grid grid-cols-2 gap-4 mb-4">
         <input
-          type="text"
+          type="date"
           placeholder="Date de naissance (dd/mm/yyyy)"
+          id="birth"
+          name="birth"
           class="bg-zinc-700 p-3 rounded outline-none"
           [(ngModel)]="birth" required>
         <select class="bg-zinc-700 p-3 rounded outline-none text-zinc-300">
@@ -35,7 +41,7 @@
       </div>
       <div class="mb-6">
         <label class="flex items-center">
-          <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-500" />
+          <input type="checkbox"  class="form-checkbox h-5 w-5 text-orange-500" />
           <span class="ml-2 text-sm"
           >J'accepte les conditions de ventes et la politique de confidentialité</span
           >
