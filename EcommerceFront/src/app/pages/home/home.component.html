@@ -59,6 +59,11 @@
       <div class="bg-zinc-800 rounded-full w-fit">
         <img src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
       </div>
+
+      <div class="bg-zinc-800 rounded-full w-fit">
+        <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="redirectToAccount()">
+        <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20" (click)="redirectToLogin()">
+      </div>
     </div>
   </header>
 

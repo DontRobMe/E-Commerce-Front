@@ -1,1 +1,35 @@
-<p>compte works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compte - Instant Gaming</title>
+</head>
+
+<body class="bg-gray-100 font-sans">
+<div class="container mx-auto py-8">
+  <div class="max-w-md mx-auto bg-white shadow-md rounded px-8 py-6">
+    <div *ngIf="userService.isLoggedIn; else notLoggedIn">
+      <h2 class="text-xl font-semibold mb-4">Détails de l'utilisateur</h2>
+      <p><span class="font-semibold">Nom:</span> {{ user?.name }}</p>
+      <p><span class="font-semibold">Prénom:</span> {{ user?.lastname }}</p>
+      <p><span class="font-semibold">Email:</span> {{ user?.email }}</p>
+      <p><span class="font-semibold">Adresse:</span> {{ user?.address }}</p>
+      <p><span class="font-semibold">Date de naissance:</span> {{ user?.birth }}</p>
+
+      <!-- Bouton pour mettre à jour les détails de l'utilisateur -->
+      <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mt-2" (click)="updateClient()">Mettre à jour les détails de l'utilisateur</button>
+
+      <!-- Bouton pour supprimer l'utilisateur -->
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2" (click)="deleteClient()">Supprimer l'utilisateur</button>
+    </div>
+    <ng-template #notLoggedIn>
+      <p class="text-red-500">Vous devez être connecté pour accéder à cette page.</p>
+      <a href="/login" class="text-blue-500">Se connecter</a>
+    </ng-template>
+  </div>
+</div>
+</body>
+
+</html>

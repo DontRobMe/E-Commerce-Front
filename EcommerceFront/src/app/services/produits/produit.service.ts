@@ -26,7 +26,7 @@ export interface ProductResponse {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://localhost:7056/Produit/';
+  private apiUrl = 'http://localhost:5209/Produit/';
 
   constructor(private router: Router, private http: HttpClient) {
   }
