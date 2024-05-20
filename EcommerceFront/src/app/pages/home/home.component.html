@@ -75,14 +75,25 @@
     </div>
   </div>
 
-  <div *ngFor="let product of products" class="min-w-[300px] rounded-lg overflow-hidden shadow-lg relative">
-    <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-full object-cover" />
-    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
-      <h3 class="text-lg">{{ product.name }}</h3>
-      <p>{{ product.price }}€</p>
+  <div class="p-4">
+    <div *ngIf="isLoading" class="text-center">
+      Loading products...
+    </div>
+    <div *ngIf="error" class="text-center text-red-500">
+      {{ error }}
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" *ngIf="!isLoading && !error">
+      <div *ngFor="let product of products" class="min-w-[300px] rounded-lg overflow-hidden shadow-lg relative">
+        <div (click)="goToGameDetails(product.id)">
+          <img [src]="product.image" [alt]="product.name" class="w-full h-full object-cover"/>
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
+            <h3 class="text-lg">{{ product.name }}</h3>
+            <p>{{ product.price }}€</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 
 
 </div>

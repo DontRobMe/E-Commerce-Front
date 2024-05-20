@@ -9,6 +9,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import {AddProductComponent} from "./pages/addgame/addgame.component";
 import {NgOptimizedImage} from "@angular/common";
+import {ProductComponent} from "./pages/product/product.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {NgOptimizedImage} from "@angular/common";
     RegisterComponent,
     HomeComponent,
     AddProductComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

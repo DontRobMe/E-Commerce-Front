@@ -11,6 +11,7 @@ export class AddProductComponent {
   imagePreview: string | ArrayBuffer | null = null;
   error: string = '';
   newProduct: Product = {
+    id: 0,
     name: '',
     description: '',
     price: 0,
@@ -26,7 +27,6 @@ export class AddProductComponent {
     this.productService.addProduct(this.newProduct).subscribe(
       (response) => {
         console.log('Product added successfully:', response);
-        //redirect to home page
 
       },
       (error) => {
