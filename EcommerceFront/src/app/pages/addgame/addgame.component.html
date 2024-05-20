@@ -1,41 +1,47 @@
-<div class="container mx-auto p-4">
-  <h2 class="text-2xl font-bold mb-4">Add a New Game</h2>
-  <form (ngSubmit)="addProduct()" class="space-y-4">
-    <div class="form-group">
-      <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
-      <input type="text" id="name" [(ngModel)]="newProduct.name" name="name" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+<div class="bg-zinc-900 text-white">
+  <div class="container mx-auto p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-zinc-800 text-white shadow-lg rounded-lg overflow-hidden">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
-      <textarea id="description" [(ngModel)]="newProduct.description" name="description" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
-      <input type="number" id="price" [(ngModel)]="newProduct.price" name="price" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-    </div>
-    <div class="form-group">
-      <label for="stock" class="block text-sm font-medium text-gray-700">Stock:</label>
-      <input type="number" id="stock" [(ngModel)]="newProduct.stock" name="stock" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-    </div>
-    <div class="form-group">
-      <label for="category" class="block text-sm font-medium text-gray-700">Category:</label>
-      <input type="text" id="category" [(ngModel)]="newProduct.category" name="category" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-    </div>
-    <div class="form-group">
-      <label for="rating" class="block text-sm font-medium text-gray-700">Rating:</label>
-      <input type="number" id="rating" [(ngModel)]="newProduct.rating" name="rating" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-    </div>
-    <div class="form-group">
-      <label for="image" class="block text-sm font-medium text-gray-700">Image:</label>
-      <input type="file" id="image" (change)="onImageSelected($event)" name="image" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-    </div>
+    <h2 class="text-2xl font-bold my-8">Add a New Game</h2>
+    <form (ngSubmit)="addProduct()" class="space-y-4">
+      <div class="form-group">
+        <label for="name" class="block text-sm font-medium text-zinc-300">Name:</label>
+        <input type="text" id="name" [(ngModel)]="newProduct.name" name="name" required class=" dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="form-group">
+        <label for="description" class="block text-sm font-medium text-zinc-300">Description:</label>
+        <textarea id="description" [(ngModel)]="newProduct.description" name="description" required class="  dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="price" class="block text-sm font-medium text-zinc-300">Price:</label>
+        <input type="number" id="price" [(ngModel)]="newProduct.price" name="price" required class="  dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="form-group">
+        <label for="stock" class="block text-sm font-medium text-zinc-300">Stock:</label>
+        <input type="number" id="stock" [(ngModel)]="newProduct.stock" name="stock" required class=" dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="form-group">
+        <label for="category" class="block text-sm font-medium text-zinc-300">Category:</label>
+        <input type="text" id="category" [(ngModel)]="newProduct.category" name="category" required class=" dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="form-group">
+        <label for="rating" class="block text-sm font-medium text-zinc-300">Rating:</label>
+        <input type="number" id="rating" [(ngModel)]="newProduct.rating" name="rating" required class=" dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="form-group">
+        <label for="image" class="block text-sm font-medium text-zinc-300">Image:</label>
+        <input type="file" id="image" (change)="onImageSelected($event)" name="image" required class=" dark:text-zinc-700 mt-1 block w-full p-2 border border-zinc-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
 
-    <div class="form-group" *ngIf="imagePreview">
-      <label class="block text-sm font-medium text-gray-700">Preview:</label>
-      <img [src]="imagePreview" alt="Selected Image" class="mt-2 max-w-full h-auto rounded-md shadow-lg">
-    </div>
+      <div class="form-group" *ngIf="imagePreview">
+        <label class="block text-sm font-medium text-zinc-300">Preview:</label>
+        <img [src]="imagePreview" alt="Selected Image" class=" dark:text-zinc-700 mt-2 max-w-full h-auto rounded-md shadow-lg">
+      </div>
 
-    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md shadow hover:bg-blue-600">Add Game</button>
-  </form>
-  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <button type="submit" class=" dark:text-zinc-700 w-full bg-blue-500 text-white p-2 rounded-md shadow hover:bg-blue-600">Add Game</button>
+    </form>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  </div>
 </div>
