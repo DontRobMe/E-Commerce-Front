@@ -59,6 +59,11 @@
       <div class="bg-zinc-800 rounded-full w-fit">
         <img src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
       </div>
+
+      <div class="bg-zinc-800 rounded-full w-fit">
+        <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="redirectToAccount()">
+        <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20" (click)="redirectToLogin()">
+      </div>
     </div>
   </header>
 
@@ -75,14 +80,25 @@
     </div>
   </div>
 
-  <div *ngFor="let product of products" class="min-w-[300px] rounded-lg overflow-hidden shadow-lg relative">
-    <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-full object-cover" />
-    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
-      <h3 class="text-lg">{{ product.name }}</h3>
-      <p>{{ product.price }}€</p>
+  <div class="p-4">
+    <div *ngIf="isLoading" class="text-center">
+      Loading products...
+    </div>
+    <div *ngIf="error" class="text-center text-red-500">
+      {{ error }}
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" *ngIf="!isLoading && !error">
+      <div *ngFor="let product of products" class="min-w-[300px] rounded-lg overflow-hidden shadow-lg relative">
+        <div (click)="goToGameDetails(product.id)">
+          <img [src]="product.image" [alt]="product.name" class="w-full h-full object-cover"/>
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
+            <h3 class="text-lg">{{ product.name }}</h3>
+            <p>{{ product.price }}€</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 
 
 </div>

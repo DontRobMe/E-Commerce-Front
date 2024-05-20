@@ -26,12 +26,8 @@
       <input type="number" id="rating" [(ngModel)]="newProduct.rating" name="rating" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
     </div>
     <div class="form-group">
-      <label for="keys" class="block text-sm font-medium text-gray-700">Keys:</label>
-      <input type="text" id="keys" [(ngModel)]="newProduct.keys" name="keys" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-    </div>
-    <div class="form-group">
       <label for="image" class="block text-sm font-medium text-gray-700">Image:</label>
-      <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+      <input type="file" id="image" (change)="onImageSelected($event)" name="image" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
     </div>
 
     <div class="form-group" *ngIf="imagePreview">
@@ -41,4 +37,5 @@
 
     <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md shadow hover:bg-blue-600">Add Game</button>
   </form>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 </div>

@@ -7,16 +7,20 @@ import {SupportComponent} from "./pages/support/support.component";
 import {AddProductComponent} from "./pages/addgame/addgame.component";
 import {WishlistComponent} from "./pages/wishlist/wishlist.component";
 import {OrdersComponent} from "./pages/orders/orders.component";
+import {CompteComponent} from "./pages/compte/compte.component";
+import {ProductComponent} from "./pages/product/product.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'compte/:id', component: OrdersComponent}, //make page
+  { path: 'compte/:id', component: CompteComponent}, //make page
   { path: 'orders', component: OrdersComponent }, //make page
   { path: 'support', component: SupportComponent }, //make page
   { path: 'wishlist', component: WishlistComponent}, //make page
   { path: 'addgame', component: AddProductComponent }, //make page
+  { path: 'game/:id', component: ProductComponent }, // Définissez une route avec un paramètre d'identifiant
+  { path: 'client', component: CompteComponent }, //make page
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];
