@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProducts();
-    this.isLoggedIn = this.userService.isLoggedIn(); // Assurez-vous que cette méthode existe dans votre service UserService
+    this.isLoggedIn = this.userService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const token = this.userService.getToken();
+      console.log('Token:', token);
+    }
   }
 
   fetchProducts() {
