@@ -61,8 +61,17 @@
       </div>
 
       <div class="bg-zinc-800 rounded-full w-fit">
-        <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="redirectToAccount()">
+        <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="toggleDropdown()">
         <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20" (click)="redirectToLogin()">
+      </div>
+
+      <div *ngIf="isLoggedIn && showDropdown" class="bg-gray-800 rounded-lg absolute top-14 right-0 mt-1 z-10">
+        <ul class="py-2">
+          <li><a href="/client">Account</a></li>
+          <li><a href="/orders">my orders</a></li>
+          <li><a href="/wishlist">wishlist</a></li>
+          <li><a (click)="logout()" href="#">logout</a></li>
+        </ul>
       </div>
     </div>
   </header>
