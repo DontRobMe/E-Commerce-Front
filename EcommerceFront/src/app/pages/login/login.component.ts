@@ -11,15 +11,20 @@ export class LoginComponent {
   Password: string = '';
   error: string = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+    constructor(private userService: UserService, private router: Router) {}
 
   onSubmit(): void {
-    this.userService.login(this.Email, this.Password).subscribe(response => {
-        console.log('Connexion réussie:', response);
-         this.router.navigate(['/home']);
-      }, error => {
-        console.error('Erreur lors de la connexion:', error);
-        this.error = error.error;
-      });
+    this.userService.login(this.Email, this.Password).subscribe(
+      (response) => {
+        console.log('Login successful. ', response);
+        const token = response.token; // Accédez à la propriété token de la réponse
+        this.userService.storeToken(token);
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.error = 'Login failed. Please check your credentials.';
+        console.error('Login error:', error);
+      }
+    );
   }
 }
