@@ -165,30 +165,44 @@
     </div>
   </header>
 </div>
-<body class="bg-gray-100 font-sans">
-<div class="container mx-auto py-8">
-  <div class="max-w-md mx-auto bg-white shadow-md rounded px-8 py-6">
-    <div *ngIf="userService.isLoggedIn; else notLoggedIn">
-      <h2 class="text-xl font-semibold mb-4">Détails de l'utilisateur</h2>
-      <p><span class="font-semibold">Nom:</span> {{ user?.name }}</p>
-      <p><span class="font-semibold">Prénom:</span> {{ user?.lastName}}</p>
-      <p><span class="font-semibold">Email:</span> {{ user?.email }}</p>
-      <p><span class="font-semibold">Adresse:</span> {{ user?.address }}</p>
-      <p><span class="font-semibold">Date de naissance:</span> {{ user?.birth }}</p>
+<div class="bg-zinc-900 text-white min-h-screen" *ngIf="userService.isLoggedIn; else notLoggedIn">
+  <main class="container mx-auto p-4">
+    <div  class="grid grid-cols-1 md:grid-cols-2 gap-4" >
+      <div class="bg-zinc-800 p-4 rounded-lg" >
+        <h2 class="text-xl font-bold mb-2">Profil</h2>
+        <img src="https://placehold.co/150" alt="Image de Profil" class="rounded-full mb-2">
+        <p><span class="font-semibold">Nom:</span> {{ user?.name }}</p>
+        <p><span class="font-semibold">Prénom:</span> {{ user?.lastname }}</p>
+        <p><span class="font-semibold">Email:</span> {{ user?.email }}</p>
+        <p><span class="font-semibold">Adresse:</span> {{ user?.address }}</p>
+        <p><span class="font-semibold">Date de naissance:</span> {{ user?.birth }}</p>
+        <button class="bg-blue-500 text-white p-2 rounded-lg mt-2" (click)="updateClient()">Mettre à jour les détails de l'utilisateur</button>
 
-      <!-- Bouton pour mettre à jour les détails de l'utilisateur -->
-      <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mt-2" (click)="updateClient()">Mettre à jour les détails de l'utilisateur</button>
-
-      <!-- Bouton pour supprimer l'utilisateur -->
-      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2" (click)="deleteClient()">Supprimer l'utilisateur</button>
+      </div>
+      <div class="bg-zinc-800 p-4 rounded-lg">
+        <h2 class="text-xl font-bold mb-2">Informations de Paiement</h2>
+        <p>Numéro de Carte: XXXX-XXXX-XXXX-1234</p>
+        <p>Date d'Expiration: 12/24</p>
+        <button class="bg-blue-500 text-white p-2 rounded-lg mt-2">Modifier les Infos de Paiement</button>
+      </div>
+      <div class="bg-zinc-800 p-4 rounded-lg">
+        <h2 class="text-xl font-bold mb-2">Paramètres</h2>
+        <p>Notification: Activée</p>
+        <p>Thème: Sombre</p>
+        <button class="bg-blue-500 text-white p-2 rounded-lg mt-2">Modifier les Paramètres</button>
+      </div>
+      <div class="bg-zinc-800 p-4 rounded-lg">
+        <h2 class="text-xl font-bold mb-2">Sécurité</h2>
+        <p>Mot de Passe: ********</p>
+        <button class="bg-blue-500 text-white p-2 rounded-lg mt-2">Changer le Mot de Passe</button>
+        <!-- Bouton pour supprimer l'utilisateur -->
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2" (click)="deleteClient()">Supprimer l'utilisateur</button>
+      </div>
     </div>
-    <ng-template #notLoggedIn>
-      <p class="text-red-500">Vous devez être connecté pour accéder à cette page.</p>
-      <a href="/login" class="text-blue-500">Se connecter</a>
-    </ng-template>
-  </div>
+  </main>
 </div>
-</body>
-
-</html>
+<ng-template #notLoggedIn>
+  <p class="text-red-500">Vous devez être connecté pour accéder à cette page.</p>
+  <a href="/login" class="text-blue-500">Se connecter</a>
+</ng-template>
 
