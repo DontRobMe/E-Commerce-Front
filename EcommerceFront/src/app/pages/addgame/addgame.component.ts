@@ -89,4 +89,12 @@ export class AddProductComponent {
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
   }
+  redirectToCart(): void {
+    const userId = this.userService.getUserId();
+    if (this.isLoggedIn && userId) {
+      this.router.navigate(['/orders']);
+    }else {
+      this.router.navigate(['/login']);
+    }
+  }
 }

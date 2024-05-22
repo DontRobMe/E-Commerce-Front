@@ -27,7 +27,7 @@ export interface UserResponse {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://localhost:7056/Client/';
+  private apiUrl = 'http://localhost:5209/Client/';
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router) {
   }

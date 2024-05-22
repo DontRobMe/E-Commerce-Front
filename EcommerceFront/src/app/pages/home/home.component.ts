@@ -99,5 +99,14 @@ export class HomeComponent implements OnInit {
     this.userService.removeToken();
     window.location.reload();
   }
+
+  redirectToCart(): void {
+    const userId = this.userService.getUserId();
+    if (this.isLoggedIn && userId) {
+      this.router.navigate(['/orders']);
+    }else {
+      this.router.navigate(['/login']);
+    }
+  }
 }
 

@@ -9,11 +9,11 @@ import {Router} from "@angular/router";
   templateUrl: './wishlist.component.html',
 })
 export class WishlistComponent implements OnInit {
-  isLoading = true;
   error: string | null = null;
   wishlist: WishlistProductDto[] = [];
   isLoggedIn: boolean = false;
   showDropdown: boolean = false;
+  isLoading = true;
 
   constructor(
     protected userService: UserService,
@@ -83,6 +83,15 @@ export class WishlistComponent implements OnInit {
     const userId = this.userService.getUserId();
     if (userId) {
       this.router.navigate(['/wishlist']);
+    }
+  }
+
+  redirectToCart(): void {
+    const userId = this.userService.getUserId();
+    if (this.isLoggedIn && userId) {
+      this.router.navigate(['/orders']);
+    }else {
+      this.router.navigate(['/login']);
     }
   }
 }

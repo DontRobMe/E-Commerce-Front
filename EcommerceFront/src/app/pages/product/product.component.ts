@@ -82,4 +82,13 @@ export class ProductComponent {
       this.router.navigate(['/wishlist']);
     }
   }
+
+  redirectToCart(): void {
+    const userId = this.userService.getUserId();
+    if (this.isLoggedIn && userId) {
+      this.router.navigate(['/orders']);
+    }else {
+      this.router.navigate(['/login']);
+    }
+  }
 }

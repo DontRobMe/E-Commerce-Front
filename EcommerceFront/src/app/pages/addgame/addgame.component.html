@@ -143,7 +143,7 @@
       </div>
 
       <div class="bg-zinc-800 rounded-full w-fit ml-4">
-        <img src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
+        <img (click)="redirectToCart()" src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
       </div>
       <div class="bg-zinc-800 rounded-full w-fit ml-4">
         <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="toggleDropdown()">
@@ -152,7 +152,6 @@
       </div>
       <div *ngIf="isLoggedIn && showDropdown" class="bg-zinc-700 p-4 rounded-lg absolute top-14 right-0 mt-1 z-10">
         <button class="block mb-2" (click)="redirectToAccount()">Account</button>
-        <button class="block mb-2">My Orders</button>
         <button class="block mb-2" (click)="redirectToWishlist()">Wishlist</button>
         <button class="block text-red-500 mb-2" (click)="logout()">Logout</button>
       </div>
