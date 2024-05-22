@@ -11,7 +11,7 @@ describe('SupportComponent', () => {
       imports: [SupportComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(SupportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('SupportComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+a

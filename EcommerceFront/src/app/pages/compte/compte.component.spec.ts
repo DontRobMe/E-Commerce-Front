@@ -11,7 +11,7 @@ describe('CompteComponent', () => {
       imports: [CompteComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CompteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('CompteComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+a

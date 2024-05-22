@@ -11,7 +11,7 @@ describe('OrdersComponent', () => {
       imports: [OrdersComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(OrdersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('OrdersComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+a

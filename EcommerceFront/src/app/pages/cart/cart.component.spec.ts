@@ -11,7 +11,7 @@ describe('CartComponent', () => {
       imports: [CartComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+a

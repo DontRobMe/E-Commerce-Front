@@ -39,3 +39,4 @@ import {WishlistComponent} from "./pages/wishlist/wishlist.component";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+a

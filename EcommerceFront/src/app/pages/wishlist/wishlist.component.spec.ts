@@ -11,7 +11,7 @@ describe('WishlistComponent', () => {
       imports: [WishlistComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(WishlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('WishlistComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+a
