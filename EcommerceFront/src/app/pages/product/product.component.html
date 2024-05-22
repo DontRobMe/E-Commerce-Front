@@ -1,86 +1,199 @@
-<div *ngIf="game" class="min-h-screen flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
-  <div class="max-w-4xl mx-auto p-4 bg-zinc-800 text-white w-full">
-    <header class="flex justify-between items-center py-4">
-      <div class="flex items-center">
-        <img src="./assets/logos/logo-horizontal.svg" alt="Logo" class="mr-8 size-1/12"/>
-        <div class="bg-black text-white p-4 flex items-center justify-between">
-          <div class="flex items-center space-x-4 relative">
-            <div class="relative group">
-              <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
-                <img src="./assets/logos/icon-pc.svg" alt="PC" class="h-6 w-6">
-                <span>PC</span>
-                <span class="material-icons">expand_more</span>
-              </button>
-              <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
-                <div class="flex items-center space-x-2">
-                  <img src="./assets/logos/icon-pc.svg" alt="PC" class="h-6 w-6">
-                  <span>PC</span>
-                </div>
-                <!-- Ajoutez les autres options de menu de la même manière -->
-              </div>
-            </div>
-            <div class="relative group">
-
-              <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
-                <img src="./assets/logos/icon-play.svg" alt="PC" class="h-6 w-6">
-                <span>Playstation</span>
-                <span class="material-icons">expand_more</span>
-              </button>
-
-              <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
-                <div class="flex items-center space-x-2">
-                  <img src="./assets/logos/icon-play.svg" alt="PC" class="h-6 w-6">
-                  <span>play</span>
-                </div>
-
-              </div>
-            </div>
-            <div class="relative group">
-
-              <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
-                <img src="./assets/logos/icon-xbx.svg" alt="PC" class="h-6 w-6">
-                <span>Xbox</span>
-                <span class="material-icons">expand_more</span>
-              </button>
-
-              <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
-                <div class="flex items-center space-x-2">
-                  <img src="./assets/logos/icon-xbx.svg" alt="PC" class="h-6 w-6">
-                  <span>Xbox</span>
-                </div>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Gaming Store</title>
+</head>
+<div class="px-4 bg-black">
+  <header class="bg-black flex flex-col justify-center items-center py-4">
+    <div class="flex items-center">
+      <img (click)="redirectTohHome()" src="./assets/logos/logo-horizontal.svg" alt="Logo" class="mr-8 size-1/12"/>
+      <div class="bg-black text-white p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4 relative">
+          <!-- PC Section -->
+          <div class="relative group">
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-pc.svg" alt="PC" class="h-6 w-6">
+              <span>PC</span>
+              <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                   class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            </button>
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="container platforms">
+                <a href="https://www.instant-gaming.com/fr/pc/steam/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="Steam" class="h-6 w-6">
+                    <span>Steam</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/ubisoft-connect/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="Ubisoft Connect" class="h-6 w-6">
+                    <span>Ubisoft Connect</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/ea-app/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="EA App" class="h-6 w-6">
+                    <span>EA App</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/battle-net/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="Battle.net" class="h-6 w-6">
+                    <span>Battle.net</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/rockstar/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="Rockstar" class="h-6 w-6">
+                    <span>Rockstar</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/gog-com/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="GOG.com" class="h-6 w-6">
+                    <span>GOG.com</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/microsoft-store/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="Microsoft Store" class="h-6 w-6">
+                    <span>Microsoft Store</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/pc/epic-games/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-pc.svg" alt="Epic Games" class="h-6 w-6">
+                    <span>Epic Games</span>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
-          <button class="bg-orange-500 p-3 rounded-full">
-            <span class="material-icons text-white">search</span>
-          </button>
-        </div>
-        <div class="bg-zinc-800 rounded-full w-fit">
-          <img src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
+
+          <!-- Playstation Section -->
+          <div class="relative group">
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-play.svg" alt="Playstation" class="h-6 w-6">
+              <span>Playstation</span>
+              <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                   class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            </button>
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="container platforms">
+                <a href="https://www.instant-gaming.com/fr/playstation/ps4/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-play.svg" alt="Playstation 4" class="h-6 w-6">
+                    <span>Playstation 4</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/playstation/ps5/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-play.svg" alt="Playstation 5" class="h-6 w-6">
+                    <span>Playstation 5</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Xbox Section -->
+          <div class="relative group">
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-xbx.svg" alt="Xbox" class="h-6 w-6">
+              <span>Xbox</span>
+              <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                   class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            </button>
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="container platforms">
+                <a href="https://www.instant-gaming.com/fr/xbox/xbox-one/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-xbx.svg" alt="Xbox ONE" class="h-6 w-6">
+                    <span>Xbox ONE</span>
+                  </div>
+                </a>
+                <a href="https://www.instant-gaming.com/fr/xbox/xbox-series-x-s/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-xbx.svg" alt="Xbox Series X|S" class="h-6 w-6">
+                    <span>Xbox Series X|S</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nintendo Section -->
+          <div class="relative group">
+            <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
+              <img src="./assets/logos/icon-swt.svg" alt="Nintendo" class="h-6 w-6">
+              <span>Nintendo</span>
+              <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                   class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            </button>
+            <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block">
+              <div class="container platforms">
+                <a href="https://www.instant-gaming.com/fr/nintendo/switch/">
+                  <div class="flex items-center space-x-2">
+                    <img src="./assets/logos/icon-swt.svg" alt="Nintendo Switch" class="h-6 w-6">
+                    <span>Nintendo Switch</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-zinc-800 rounded-full w-fit">
-          <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="redirectToAccount()">
-          <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20" (click)="redirectToLogin()">
+        <div class="relative group">
+          <button class="bg-orange-500 p-3 rounded-full">
+            <img src="./assets/logos/search.svg" alt="search" class="size-20">
+          </button>
         </div>
       </div>
-    </header>
-    <div class="flex flex-wrap md:flex-nowrap w-full">
+
+      <div class="bg-zinc-800 rounded-full w-fit ml-4">
+        <img src="./assets/logos/icon-cart.svg" alt="cart" class="size-20">
+      </div>
+      <div class="bg-zinc-800 rounded-full w-fit ml-4">
+        <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="toggleDropdown()">
+        <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20"
+             (click)="redirectToLogin()">
+      </div>
+      <div *ngIf="isLoggedIn && showDropdown" class="bg-zinc-700 p-4 rounded-lg absolute top-14 right-0 mt-1 z-10">
+        <button class="block mb-2" (click)="redirectToAccount()">Account</button>
+        <button class="block mb-2">My Orders</button>
+        <button class="block mb-2" (click)="redirectToWishlist()">Wishlist</button>
+        <button class="block text-red-500 mb-2" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+
+<body class="bg-black text-white flex flex-col items-center h-screen">
+  <div *ngIf="game" class="max-w-4xl mx-auto p-4 bg-zinc-800 text-white w-full flex flex-col items-center justify-center">
+    <div class="flex flex-wrap md:flex-nowrap">
       <div class="w-full md:w-1/2">
-        <img *ngIf="game.image" [src]="game.image" [alt]="game.name" class="img-fluid" style="max-height: 400px;" class="rounded-lg shadow-lg">
-        <p class="mt-4 text-sm text-zinc-300 dark:text-zinc-300" *ngIf="game.description"> {{ game.description }}</p>
+        <img *ngIf="game.image" [src]="game.image" [alt]="game.name" class="img-fluid rounded-lg shadow-lg"
+             style="max-height: 400px;">
+        <p class="mt-4 text-sm text-zinc-300 dark:text-zinc-300" *ngIf="game.description">{{ game.description }}</p>
       </div>
       <div class="w-full md:w-1/2 md:pl-4">
         <h2 class="text-3xl font-bold mt-4 md:mt-0">{{ game.name }}</h2>
         <div class="flex items-center mt-2">
-          <span class="bg-blue-500 text-xs text-white font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">Platform</span>
+          <span
+            class="bg-blue-500 text-xs text-white font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">Platform</span>
           <span class="text-green-500" *ngIf="game.stock">Stock: {{ game.stock }}</span>
-          <span class="ml-auto bg-green-500 text-xs text-white font-semibold px-2.5 py-0.5 rounded">Digital Download</span>
+          <span
+            class="ml-auto bg-green-500 text-xs text-white font-semibold px-2.5 py-0.5 rounded">Digital Download</span>
         </div>
         <div class="mt-4">
           <label for="platform" class="block mb-2 text-sm font-medium text-zinc-300 dark:text-zinc-300">Platform</label>
-          <select id="platform" class="bg-zinc-700 border border-zinc-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <select id="platform"
+                  class="bg-zinc-700 border border-zinc-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             <option selected>PC</option>
           </select>
         </div>
@@ -89,27 +202,29 @@
           <p *ngIf="game.price">Price: {{ game.price }}€</p>
         </div>
         <div class="flex items-center mt-4">
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
-            <img src="https://placehold.co/20" alt="Heart Icon" class="inline mr-2">0
+          <button (click)="addWishlist(game.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
+            <img src="./assets/logos/icon-favorite.svg" class="h-6 w-6" alt="" style="vertical-align: middle;">
           </button>
           <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-r">
             Add to Cart
           </button>
         </div>
+
         <div class="mt-4">
-          <span class="bg-green-500 text-xs text-white font-semibold mr-2 px-2.5 py-0.5 rounded">9/10</span>
+          <span class="bg-green-500 text-xs text-white font-semibold mr-2 px-2.5 py-0.5 rounded"
+                *ngIf="game.rating">{{ game.rating }}</span>
           Based on 45 reviews
         </div>
         <div class="mt-4">
           <span class="bg-yellow-500 text-xs text-white font-semibold mr-2 px-2.5 py-0.5 rounded">Category</span>
-          <p>Action</p>
+          <p *ngIf="game.description">Description: {{ game.description }}</p>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-
-<div *ngIf="!game" class="container">
-  <div class="alert alert-danger">Game not found.</div>
-</div>
+  <div *ngIf="!game" class="container">
+    <div class="alert alert-danger">Game not found.</div>
+  </div>
+</body>
+</html>

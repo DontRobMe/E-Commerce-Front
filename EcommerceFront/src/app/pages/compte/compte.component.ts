@@ -1,6 +1,8 @@
+// CompteComponent
 import { Component, OnInit } from '@angular/core';
-import {UserService, USER, UserResponse} from "../../services/users/user.service";
+import { UserService, USER, UserResponse } from "../../services/users/user.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-compte',
@@ -8,27 +10,21 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class CompteComponent implements OnInit {
   user: USER | undefined;
-  protected readonly UserService = UserService;
+  isLoggedIn: boolean = false;
+  showDropdown: boolean = false;
 
-  constructor(protected userService: UserService, private jwtHelper: JwtHelperService) { }
+  constructor(protected userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    const userId = this.getUserIdFromToken();
-    if (userId) {
-      this.fetchUser(userId);
-    } else {
-      console.error('User ID not found in token.');
+    this.isLoggedIn = this.userService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const token = this.userService.getToken();
+      const id = this.userService.getUserId()
+      console.log('Token:', token);
+      this.fetchUser(id)
     }
   }
 
-  getUserIdFromToken(): number | null {
-    const token = this.userService.getToken();
-    if (token) {
-      const decodedToken: any = this.jwtHelper.decodeToken(token);
-      return decodedToken ? +decodedToken.nameid : null;
-    }
-    return null;
-  }
   fetchUser(userId: number): void {
     // @ts-ignore
     this.userService.getUser(userId).subscribe((response: UserResponse) => {
@@ -42,37 +38,10 @@ export class CompteComponent implements OnInit {
     });
   }
 
-  // addWishlist(): void {
-  //   if (this.user) {
-  //     this.userService.addWishlist(this.user.id, this.gameId).subscribe((response: any) => {
-  //       if (response.result) {
-  //         console.log('Wishlist added:', response.result);
-  //       } else {
-  //         console.error('Wishlist not added:', response);
-  //       }
-  //     });
-  //   } else {
-  //     console.error('User details not available.');
-  //   }
-  // }
-
-  getWishlist(): void {
-    if (this.user) {
-      this.userService.getWishlist(this.user.id).subscribe((response: any) => {
-        if (response.result) {
-          console.log('Wishlist:', response.result);
-        } else {
-          console.error('Wishlist not found:', response);
-        }
-      });
-    } else {
-      console.error('User details not available.');
-    }
-  }
-
+  // Méthode pour mettre à jour les informations de l'utilisateur
   updateClient(): void {
     if (this.user) {
-      this.userService.updateClient(this.user.id, this.user.name, this.user.lastname, this.user.email, this.user.address, this.user.password, this.user.birth).subscribe((response: any) => {
+      this.userService.updateClient(this.user.id, this.user.name, this.user.lastName, this.user.email, this.user.address, this.user.password, this.user.birth).subscribe((response: any) => {
         if (response.result) {
           console.log('User updated:', response.result);
         } else {
@@ -98,4 +67,34 @@ export class CompteComponent implements OnInit {
     }
   }
 
+  redirectToWishlist(): void {
+    const userId = this.userService.getUserId();
+    if (userId) {
+      this.router.navigate(['/wishlist']);
+    }
+  }
+
+  redirectToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
+  redirectToAccount(): void {
+    const id = this.userService.getUserId();
+    if(this.isLoggedIn){
+      this.router.navigate(['/compte/:id']);
+    }else{
+      this.router.navigate(['/login']);
+    }
+  }
+
+  redirectTohHome(): void {
+    this.router.navigate(['/home']);
+  }
+  logout(): void {
+    this.userService.removeToken();
+    this.router.navigate(['/home']);
+  }
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
 }

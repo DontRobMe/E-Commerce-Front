@@ -10,7 +10,7 @@ import {UserService} from "../../services/users/user.service";
 export class ProductComponent {
   game: Product | undefined;
   isLoggedIn: boolean = false;
-
+  showDropdown: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +21,11 @@ export class ProductComponent {
 
   ngOnInit(): void {
     const gameId = Number(this.route.snapshot.paramMap.get('id'));
-    this.isLoggedIn = this.userService.isLoggedIn(); // Assurez-vous que cette méthode existe dans votre service UserService
-
+    this.isLoggedIn = this.userService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const token = this.userService.getToken();
+      console.log('Token:', token);
+    }
     // @ts-ignore
     this.productService.getProduct(gameId).subscribe((response: ProductResponse) => {
       if (response.result) {
@@ -42,6 +45,41 @@ export class ProductComponent {
   }
 
   redirectToAccount(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/compte/:id']);
+  }
+
+  redirectTohHome(): void {
+    this.router.navigate(['/home']);
+  }
+  logout(): void {
+    this.userService.removeToken();
+    this.router.navigate(['/home']);
+  }
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  //addwish
+  addWishlist(gameId: number): void {
+    const userId = this.userService.getUserId();
+
+    this.userService.addWishlist(userId, gameId).subscribe((response) => {
+      console.log('Wishlist response:', response);
+      if (response.isSuccess) {
+        alert('Game added to wishlist');
+      } else {
+        alert('Failed to add game to wishlist');
+      }
+    }, (error) => {
+      console.error('Error adding game to wishlist:', error);
+      alert('Failed to add game to wishlist');
+    });
+  }
+
+  redirectToWishlist(): void {
+    const userId = this.userService.getUserId();
+    if (userId) {
+      this.router.navigate(['/wishlist']);
+    }
   }
 }

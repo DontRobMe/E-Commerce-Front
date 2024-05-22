@@ -12,6 +12,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {ProductComponent} from "./pages/product/product.component";
 import {CompteComponent} from "./pages/compte/compte.component";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
+import {WishlistComponent} from "./pages/wishlist/wishlist.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
     AddProductComponent,
     ProductComponent,
     CompteComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

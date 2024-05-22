@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'wishlist', component: WishlistComponent}, //make page
   { path: 'addgame', component: AddProductComponent }, //make page
   { path: 'game/:id', component: ProductComponent }, // Définissez une route avec un paramètre d'identifiant
-  { path: 'client', component: CompteComponent }, //make page
+  { path: 'client/:userId', component: CompteComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

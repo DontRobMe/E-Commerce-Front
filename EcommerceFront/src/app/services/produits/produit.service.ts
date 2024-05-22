@@ -13,6 +13,12 @@ export interface Product {
   rating: number;
   image: string;
 }
+export interface WishlistProductDto {
+  produitId: number;
+  produitName: string;
+  produitImage: string;
+  produitPrice: number;
+}
 
 export interface ProductResponse {
   result: Product[];
@@ -31,8 +37,8 @@ export class ProductService {
   constructor(private router: Router, private http: HttpClient) {
   }
 
-  getProducts(): Observable<ProductResponse[]> {
-    return this.http.get<ProductResponse[]>(`${this.apiUrl}getproduits`);
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}getproduits`);
   }
 
   addProduct(product: Product): Observable<Product> {
