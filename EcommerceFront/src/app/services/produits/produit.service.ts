@@ -20,6 +20,14 @@ export interface WishlistProductDto {
   produitPrice: number;
 }
 
+export interface CartProductDto {
+  produitId: number;
+  produitName: string;
+  produitImage: string;
+  produitPrice: number;
+  produitCategory: string;
+}
+
 export interface ProductResponse {
   result: Product[];
   message: string | null;

@@ -76,6 +76,20 @@ export class ProductComponent {
     });
   }
 
+  addCart(gameId: number): void {
+    const userId = this.userService.getUserId();
+    this.userService.addCart(userId, gameId).subscribe((response) => {
+      console.log('Cart response:', response);
+      if (response.isSuccess) {
+        alert('Game added to cart');
+      } else {
+        alert('Failed to add game to cart');
+      }
+    }, (error) => {
+      console.error('Error adding game to cart:', error);
+      alert('Failed to add game to cart');
+    });
+  }
   redirectToWishlist(): void {
     const userId = this.userService.getUserId();
     if (userId) {
@@ -86,7 +100,7 @@ export class ProductComponent {
   redirectToCart(): void {
     const userId = this.userService.getUserId();
     if (this.isLoggedIn && userId) {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/cart']);
     }else {
       this.router.navigate(['/login']);
     }

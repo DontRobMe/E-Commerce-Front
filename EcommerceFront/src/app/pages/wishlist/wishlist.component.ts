@@ -89,7 +89,7 @@ export class WishlistComponent implements OnInit {
   redirectToCart(): void {
     const userId = this.userService.getUserId();
     if (this.isLoggedIn && userId) {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/cart']);
     }else {
       this.router.navigate(['/login']);
     }
