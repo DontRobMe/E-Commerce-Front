@@ -11,9 +11,10 @@ export class RegisterComponent {
   lastname: string = '';
   email: string = '';
   address: string = '';
-  password: string = '';
   birth: Date = new Date();
   error: string = '';
+  password: string = '';
+  isPasswordVisible: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -30,6 +31,10 @@ export class RegisterComponent {
         this.error = error.error;
       }
     );
+  }
+
+  togglePasswordVisibility(): void {
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 }
 

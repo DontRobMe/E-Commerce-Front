@@ -10,15 +10,9 @@
           name="email"
           class="bg-zinc-700 p-3 rounded outline-none col-span-2"
           [(ngModel)]="email" required>
-        <input
-          type="password"
-          placeholder="Votre mot de passe"
-          id="password"
-          name="password"
-          class="bg-zinc-700 p-3 rounded outline-none"
-          [(ngModel)]="password" required>
-        <button class="bg-transparent text-white">
-          <img src="https://placehold.co/20x20" alt="Show password" class="inline"/>
+        <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Votre mot de passe" id="password" name="password" class="bg-zinc-700 p-3 rounded outline-none" [(ngModel)]="password" required>
+        <button type="button" (click)="togglePasswordVisibility()" class="bg-trans parent text-white">
+          <img src="./assets/logos/icon-view.svg" alt="Show password" class="inline h-6 w-6"/>
         </button>
         <input type="text" placeholder="Prénom" id="lastname" name="lastname"
                class="bg-zinc-700 p-3 rounded outline-none form-control" [(ngModel)]="lastname" required>
