@@ -170,7 +170,6 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="bg-zinc-800 p-4 rounded-lg">
         <h2 class="text-xl font-bold mb-2">Profil</h2>
-        <img src="https://placehold.co/150" alt="Image de Profil" class="rounded-full mb-2">
         <p><span class="font-semibold">Nom:</span> {{ user?.name }}</p>
         <p><span class="font-semibold">Prénom:</span> {{ user?.lastName }}</p>
         <p><span class="font-semibold">Email:</span> {{ user?.email }}</p>
@@ -194,16 +193,15 @@
         <h2 class="text-xl font-bold mb-2">Sécurité</h2>
         <p>Mot de Passe: ********</p>
         <button class="bg-blue-500 text-white p-2 rounded-lg mt-2">Changer le Mot de Passe</button>
-        <!-- Bouton pour supprimer l'utilisateur -->
         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2" (click)="deleteClient()">Supprimer l'utilisateur</button>
       </div>
       <div class="bg-zinc-800 p-4 rounded-lg col-span-2 lg:col-span-3">
         <h2 class="text-xl font-bold mb-2">Factures</h2>
-        <div class="overflow-y-auto max-h-32" id="invoicesList">
+        <div class="overflow-y-auto max-h-44" id="invoicesList">
           <ul>
             <li class="flex justify-between items-center py-2">
               <span>Facture 001</span>
-              <button class="bg-blue-500 text-white p-2 rounded-lg">Voir</button>
+              <button class="bg-blue-500 text-white p-2 rounded-lg">Télécharger</button>
             </li>
             <li class="flex justify-between items-center py-2">
               <span>Facture 002</span>
@@ -233,7 +231,6 @@
   const invoicesList = document.getElementById('invoicesList');
   invoicesList.addEventListener('scroll', function() {
     if (invoicesList.scrollTop + invoicesList.clientHeight >= invoicesList.scrollHeight) {
-      // Load more invoices or show the 4th invoice
       console.log('Load more invoices or show the 4th invoice');
     }
   });
