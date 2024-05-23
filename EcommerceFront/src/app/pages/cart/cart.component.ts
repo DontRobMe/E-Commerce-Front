@@ -100,6 +100,11 @@ export class CartComponent {
       this.router.navigate(['/confirmation']);
     }else {
       this.router.navigate(['/login']);
-    }  }
+    }
+  }
+
+  calculateTotalCost(cart: CartProductDto[]): number {
+    return cart.reduce((total, item) => total + item.produitPrice, 0);
+  }
 }
 

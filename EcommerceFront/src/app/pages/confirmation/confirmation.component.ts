@@ -15,6 +15,7 @@ export class ConfirmationComponent implements OnInit {
   isLoggedIn: boolean = false;
   showDropdown: boolean = false;
   isLoading: boolean = true;
+  id: number = 0;
 
   constructor(private cartService: UserService, private codeGeneratorService: CodeGeneratorService, private router: Router) {
   }
@@ -22,8 +23,8 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.cartService.isLoggedIn();
     if (this.isLoggedIn) {
-      const id = this.cartService.getUserId();
-      this.fetchCart(id);
+      this.id = this.cartService.getUserId();
+      this.fetchCart(this.id);
     }
   }
 
@@ -53,18 +54,26 @@ export class ConfirmationComponent implements OnInit {
 
   generateInvoicePdf(): Blob {
     const doc = new jsPDF();
-
     doc.text('Facture', 10, 10);
-
     let y = 20;
     this.cartItems.forEach(item => {
       doc.text(`Produit: ${item.product.produitName}`, 10, y);
       doc.text(`Prix: ${item.product.produitPrice}€`, 10, y + 10);
-        y += 30;
+      y += 30;
     });
-
     doc.text(`Total: ${this.totalCost}€`, 10, y);
 
+    this.cartItems.forEach(item => {
+      this.cartService.deleteCart(this.id, item.product.produitId).subscribe(
+        () => {
+          console.log('Article supprimé du panier avec succès');
+        },
+        (error) => {
+          console.error('Erreur lors de la suppression de l\'article du panier:', error);
+        }
+      );
+    });
+    this.redirectTohHome();
     return doc.output('blob');
   }
 
