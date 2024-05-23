@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   error: string | null = null;
   products: Product[] = [];
   isLoggedIn: boolean = false;
+  showDropdown: boolean = false;
 
   constructor(private productService: ProductService, private userService: UserService, private router: Router) {
   }
@@ -25,7 +26,9 @@ export class HomeComponent implements OnInit {
       console.log('Token:', token);
     }
   }
-
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
   fetchProducts() {
     // @ts-ignore
     this.productService.getProducts().subscribe((response: ProductResponse) => {
@@ -56,6 +59,11 @@ export class HomeComponent implements OnInit {
   }
 
   redirectToAccount(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/client']);
+  }
+
+  logout(): void {
+    this.userService.removeToken(); // Appeler la fonction removeToken pour supprimer le token
+    this.router.navigate(['/home']); // Rediriger vers la page d'accueil
   }
 }
