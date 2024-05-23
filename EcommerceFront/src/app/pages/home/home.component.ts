@@ -33,13 +33,11 @@ export class HomeComponent implements OnInit {
     this.showDropdown = !this.showDropdown;
   }
 
-  // Méthode pour récupérer la liste des produits depuis le service ProductService
   fetchProducts() {
     this.productService.getProducts().subscribe(
       (response: any) => {
         console.log('API Response:', response);
         if (response.isSuccess) {
-          // Vérifiez la structure exacte de la réponse et extrayez les produits appropriés
           const products = response.result.$values;
           this.products = products.map((product: any) => {
             return {
