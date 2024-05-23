@@ -8,6 +8,7 @@ import {WishlistComponent} from "./pages/wishlist/wishlist.component";
 import {CompteComponent} from "./pages/compte/compte.component";
 import {ProductComponent} from "./pages/product/product.component";
 import {CartComponent} from "./pages/cart/cart.component";
+import {ConfirmationComponent} from "./pages/confirmation/confirmation.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'addgame', component: AddProductComponent }, //make page
   { path: 'game/:id', component: ProductComponent }, // Définissez une route avec un paramètre d'identifiant
   { path: 'client/:userId', component: CompteComponent },
+  { path: 'confirmation', component: ConfirmationComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

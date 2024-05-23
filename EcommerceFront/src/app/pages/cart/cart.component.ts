@@ -93,5 +93,13 @@ export class CartComponent {
       this.router.navigate(['/login']);
     }
   }
+
+  redirectToConfirmation(): void {
+    const userId = this.userService.getUserId();
+    if (this.isLoggedIn && userId) {
+      this.router.navigate(['/confirmation']);
+    }else {
+      this.router.navigate(['/login']);
+    }  }
 }
 

@@ -14,6 +14,7 @@ import {CompteComponent} from "./pages/compte/compte.component";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 import {WishlistComponent} from "./pages/wishlist/wishlist.component";
 import {CartComponent} from "./pages/cart/cart.component";
+import {ConfirmationComponent} from "./pages/confirmation/confirmation.component";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {CartComponent} from "./pages/cart/cart.component";
     CompteComponent,
     WishlistComponent,
     CartComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,

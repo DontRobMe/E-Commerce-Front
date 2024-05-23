@@ -202,9 +202,9 @@
             <span>66,16 €</span>
           </div>
         </div>
-        <button class="bg-orange-500 text-white w-full py-2 rounded-lg">Vers le paiement</button>
+        <button (click)="redirectToConfirmation()" class="bg-orange-500 text-white w-full py-2 rounded-lg">Vers le paiement</button>
         <div class="text-center my-4">ou</div>
-        <button class="text-zinc-400 w-full">Continuer vos achats</button>
+        <button (click)="redirectTohHome()" class="text-zinc-400 w-full">Continuer vos achats</button>
       </div>
     </div>
   </div>

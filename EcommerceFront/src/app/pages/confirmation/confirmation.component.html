@@ -1,17 +1,31 @@
 <div class="bg-zinc-900 text-white min-h-screen flex flex-col items-center justify-center">
-  <img src="https://placehold.co/400" alt="Game Cover" class="mb-8" />
-  <h2 class="text-3xl font-bold mb-4">Confirmation d'achat</h2>
+  <div class="flex flex-col items-center mb-4">
+    <div class="flex items-center justify-center">
+      <img src="./assets/logos/test1.gif" alt="Vérification" class="w-40 h-32 mr-2 md:mr-0 text-green-500" />
+      <h2 class="text-3xl font-bold ml-2">Confirmation d'achat</h2>
+    </div>
+  </div>
   <p class="text-lg mb-4">Merci pour votre achat sur Instant Gaming.</p>
-
-  <div class="bg-zinc-800 p-4 rounded-lg">
-    <p class="text-lg">Détails de la commande:</p>
-    <ul class="text-left mt-2">
-      <li>Jeux: Nom du jeu</li>
-      <li>Prix: $XX.XX</li>
-      <li>Date: XX/XX/XXXX</li>
-    </ul>
-    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
+  <div class="bg-zinc-800 p-4 rounded-lg w-full md:w-auto">
+    <p class="text-lg mb-2">Détails de la commande:</p>
+    <div *ngFor="let item of cartItems" class="flex items-center mb-4">
+      <img src="{{ item.product.produitImage }}" alt="Game Cover" class="w-24 h-auto mr-4" />
+      <div class="flex flex-col">
+        <p class="text-lg font-bold">{{ item.product.produitName }}</p>
+        <p class="text-sm text-gray-400">{{ item.product.produitCategory }}</p>
+      </div>
+      <p class="ml-auto text-lg">{{ item.product.produitPrice }}€</p>
+    </div>
+    <p class="text-lg font-bold">Total: {{ totalCost }}€</p>
+    <button (click)="redirectTohHome()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mt-4">
       Continuer vos achats
     </button>
+    <button (click)="downloadInvoice()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mt-4">
+      Télécharger la facture
+    </button>
+    <div class="flex items-center mt-2">
+      <img src="./assets/logos/attention.svg" alt="Attention" class="w-8 h-8 mr-2 text-red-500" />
+      <p class="text-sm text-red-500 font-bold">N'oubliez pas de télécharger votre facture car ce sera la seule preuve d'achat que vous aurez.</p>
+    </div>
   </div>
 </div>

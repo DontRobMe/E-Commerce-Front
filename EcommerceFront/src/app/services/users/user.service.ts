@@ -1,7 +1,7 @@
 // UserService
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {CartProductDto, Product, WishlistProductDto} from "../produits/produit.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from "@angular/router";
@@ -28,6 +28,7 @@ export interface UserResponse {
 })
 export class UserService {
   private apiUrl = 'http://localhost:5209/Client/';
+  private cartItems: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router) {
   }
@@ -97,12 +98,16 @@ export class UserService {
   }
 
 
-  getCart(userId: number): Observable<WishlistProductDto[]> {
+  getCart(userId: number): Observable<CartProductDto[]> {
     return this.http.get<CartProductDto[]>(`${this.apiUrl}getcart/${userId}`);
   }
 
   deleteCart(userId: number, gameId: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}removecart/${userId}?gameId=${gameId}`);
+  }
+
+  calculateTotalCost(cartItems: any[]): number {
+    return cartItems.reduce((total, currentItem) => total + currentItem.product.produitPrice, 0);
   }
 }
 
