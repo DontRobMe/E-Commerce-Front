@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {CartProductDto} from "../../services/produits/produit.service";
-import {UserService} from "../../services/users/user.service";
-import {CodeGeneratorService} from "../../services/CodeGeneratorService/code-generator-service.service";
+import { Component, OnInit } from '@angular/core';
+import { CartProductDto } from "../../services/produits/produit.service";
+import { UserService } from "../../services/users/user.service";
+import { CodeGeneratorService } from "../../services/CodeGeneratorService/code-generator-service.service";
 import { jsPDF } from 'jspdf';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
+import { FactureDtoarray, FactureService } from "../../services/facture/facture.service";
 
 @Component({
   selector: 'app-confirmation',
@@ -17,8 +18,7 @@ export class ConfirmationComponent implements OnInit {
   isLoading: boolean = true;
   id: number = 0;
 
-  constructor(private cartService: UserService, private codeGeneratorService: CodeGeneratorService, private router: Router) {
-  }
+  constructor(private cartService: UserService, private codeGeneratorService: CodeGeneratorService, private router: Router, protected factureService: FactureService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.cartService.isLoggedIn();
@@ -51,8 +51,7 @@ export class ConfirmationComponent implements OnInit {
     );
   }
 
-
-  generateInvoicePdf(): Blob {
+  generateInvoicePdf(): string {
     const doc = new jsPDF();
     doc.text('Facture', 10, 10);
     let y = 20;
@@ -63,28 +62,59 @@ export class ConfirmationComponent implements OnInit {
     });
     doc.text(`Total: ${this.totalCost}€`, 10, y);
 
-    this.cartItems.forEach(item => {
-      this.cartService.deleteCart(this.id, item.product.produitId).subscribe(
-        () => {
-          console.log('Article supprimé du panier avec succès');
-        },
-        (error) => {
-          console.error('Erreur lors de la suppression de l\'article du panier:', error);
-        }
-      );
-    });
-    this.redirectTohHome();
-    return doc.output('blob');
+    // Convert the PDF to an ArrayBuffer
+    const pdfArrayBuffer = doc.output('arraybuffer');
+
+    // Convert the ArrayBuffer to a Uint8Array
+    const uint8Array = new Uint8Array(pdfArrayBuffer);
+
+    // Encode the Uint8Array to Base64
+    const pdfData = this.arrayBufferToBase64(uint8Array);
+
+    return pdfData; // Return the base64-encoded PDF data
   }
 
+// Function to convert ArrayBuffer to Base64
+  arrayBufferToBase64(buffer: Uint8Array): string {
+    let binary = '';
+    buffer.forEach(byte => binary += String.fromCharCode(byte));
+    return btoa(binary);
+  }
+
+  async addFacture() {
+    try {
+      const pdfData = this.generateInvoicePdf();
+
+      const facture: FactureDtoarray = {
+        clientId: 1,
+        date: new Date().toISOString(),
+        fichierPDF: pdfData
+      };
+
+      await this.factureService.addFacture(facture).toPromise();
+      console.log('Facture ajoutée avec succès');
+    } catch (error) {
+      console.error('Erreur lors de l\'ajout de la facture :', error);
+    }
+  }
+
+
   downloadInvoice() {
-    const blob = this.generateInvoicePdf();
+    const pdf = this.generateInvoicePdf();
+    const blob = new Blob([pdf], { type: 'application/pdf' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'facture.pdf';
     link.click();
   }
+
   redirectTohHome(): void {
     this.router.navigate(['/home']);
+  }
+
+  async downloadInvoiceWithFacture() {
+    await this.addFacture();
+    this.downloadInvoice();
+    this.redirectTohHome();
   }
 }

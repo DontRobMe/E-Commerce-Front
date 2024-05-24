@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService, USER, UserResponse } from "../../services/users/user.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {ActivatedRoute, Router} from "@angular/router";
+import {FactureService} from "../../services/facture/facture.service";
 
 @Component({
   selector: 'app-compte',
@@ -12,8 +13,8 @@ export class CompteComponent implements OnInit {
   user: USER | undefined;
   isLoggedIn: boolean = false;
   showDropdown: boolean = false;
-
-  constructor(protected userService: UserService, private route: ActivatedRoute, private router: Router) { }
+  factures: any[] = [];
+  constructor(protected userService: UserService, private route: ActivatedRoute, private router: Router, private factureservice : FactureService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.userService.isLoggedIn();
@@ -21,7 +22,8 @@ export class CompteComponent implements OnInit {
       const token = this.userService.getToken();
       const id = this.userService.getUserId()
       console.log('Token:', token);
-      this.fetchUser(id)
+      this.fetchUser(id);
+      this.fetchFactures(id);
     }
   }
 
@@ -36,6 +38,18 @@ export class CompteComponent implements OnInit {
         console.error('User not found in response:', response);
       }
     });
+  }
+
+  fetchFactures(userId: number): void {
+    this.factureservice.getFacture(userId).subscribe(
+      (response: any) => {
+        this.factures = response.$values; // Récupérez les factures de la réponse
+        console.log('Factures:', this.factures);
+      },
+      (error: any) => {
+        console.error('Error fetching factures:', error);
+      }
+    );
   }
 
   // Méthode pour mettre à jour les informations de l'utilisateur
@@ -106,5 +120,55 @@ export class CompteComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
+  downloadInvoice(facture: any): void {
+    // Ensure facture object and its ID are valid
+    if (facture && facture.id) {
+      console.log('Facture ID:', facture.id);
+      // Assuming facture.id is the ID of the invoice to be retrieved
+      this.factureservice.getFactures(facture.id).subscribe(
+        (response: any) => {
+          console.log('Invoice downloaded:', response);
+
+          // Check if response contains fichierPDF property
+          if (response && response.fichierPDF) {
+            // Convert the invoice to base64
+            const base64Data = response.fichierPDF;
+            console.log('Base64 data:', base64Data);
+            const byteCharacters = atob(base64Data);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+              byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+
+            // Create a Blob object
+            const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+            // Create a URL for the Blob and trigger the download
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'facture.pdf'; // Nom du fichier à télécharger
+            a.click();
+          } else {
+            console.error('Error: No fichierPDF property found in response.');
+          }
+        },
+        (error: any) => {
+          console.error('Error downloading invoice:', error);
+        }
+      );
+    } else {
+      console.error('Error: Invalid facture object or ID.');
+    }
+  }
+
+
+
+
+
+
+
 }
 

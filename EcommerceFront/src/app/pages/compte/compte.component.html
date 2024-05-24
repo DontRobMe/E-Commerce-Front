@@ -199,25 +199,15 @@
         <h2 class="text-xl font-bold mb-2">Factures</h2>
         <div class="overflow-y-auto max-h-44" id="invoicesList">
           <ul>
-            <li class="flex justify-between items-center py-2">
-              <span>Facture 001</span>
-              <button class="bg-blue-500 text-white p-2 rounded-lg">Télécharger</button>
-            </li>
-            <li class="flex justify-between items-center py-2">
-              <span>Facture 002</span>
-              <button class="bg-blue-500 text-white p-2 rounded-lg">Voir</button>
-            </li>
-            <li class="flex justify-between items-center py-2">
-              <span>Facture 003</span>
-              <button class="bg-blue-500 text-white p-2 rounded-lg">Voir</button>
-            </li>
-            <li class="flex justify-between items-center py-2">
-              <span>Facture 004</span>
-              <button class="bg-blue-500 text-white p-2 rounded-lg">Voir</button>
+            <li *ngFor="let facture of factures" class="flex justify-between items-center py-2">
+              <span>Facture {{ facture.id }}</span>
+              <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="downloadInvoice(facture)">Télécharger</button>
             </li>
           </ul>
         </div>
       </div>
+
+
     </div>
   </main>
 </div>

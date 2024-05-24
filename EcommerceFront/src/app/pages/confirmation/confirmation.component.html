@@ -17,9 +17,10 @@
       <p class="ml-auto text-lg">{{ item.product.produitPrice }}€</p>
     </div>
     <p class="text-lg font-bold">Total: {{ totalCost }}€</p>
-    <button (click)="downloadInvoice()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mt-4">
+    <button (click)="downloadInvoiceWithFacture()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mt-4">
       Télécharger la facture
     </button>
+
     <div class="flex items-center mt-2">
       <img src="./assets/logos/attention.svg" alt="Attention" class="w-8 h-8 mr-2 text-red-500" />
       <p class="text-sm text-red-500 font-bold">N'oubliez pas de télécharger votre facture car ce sera la seule preuve d'achat que vous aurez.</p>
