@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // Méthode pour basculer l'affichage du menu déroulant
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
   }
@@ -67,12 +66,10 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // Méthode pour rediriger vers la page de détails d'un jeu
   goToGameDetails(id: number) {
     this.productService.goToGameDetails(id);
   }
 
-  // Méthode pour rediriger vers la page de connexion
   redirectToLogin(): void {
     this.router.navigate(['/login']);
   }
@@ -92,7 +89,6 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/wishlist']);
     }
   }
-  // Méthode pour déconnecter l'utilisateur
   logout(): void {
     this.userService.removeToken();
     window.location.reload();
