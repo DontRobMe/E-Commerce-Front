@@ -102,5 +102,9 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
+  redirectToHome(): void {
+    this.router.navigate(['/']);
+  }
 }
 

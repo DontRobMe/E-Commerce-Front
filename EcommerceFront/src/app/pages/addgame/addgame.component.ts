@@ -39,7 +39,7 @@ export class AddProductComponent {
     this.productService.addProduct(this.newProduct).subscribe(
       (response) => {
         console.log('Product added successfully:', response);
-
+        this.redirectTohHome();
       },
       (error) => {
         console.error('Error adding product:', error);

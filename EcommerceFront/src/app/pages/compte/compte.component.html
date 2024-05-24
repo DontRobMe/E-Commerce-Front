@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compte - Instant Gaming</title>
 </head>
+<body class="bg-black text-white">
 <div class="bg-zinc-800 px-4 ">
   <header class="flex justify-between items-center  px-4 bg-zinc-800">
-    <img src="./assets/logos/logo-horizontal.svg" alt="Logo" class="h-8 w-auto">
+    <img (click)="redirectTohHome()" src="./assets/logos/logo-horizontal.svg" alt="Logo" class="h-8 w-auto">
     <div class="flex items-center space-x-4 ">
       <div class="bg-black text-white p-2 flex items-center space-x-10">
         <div class="relative group">
@@ -59,7 +60,8 @@
           <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
             <img src="./assets/logos/icon-play.svg" alt="Playstation" class="h-6 w-6">
             <span>Playstation</span>
-            <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down" class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                 class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
           </button>
           <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block z-10">
             <div class="container platforms space-y-2">
@@ -79,7 +81,8 @@
           <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
             <img src="./assets/logos/icon-xbx.svg" alt="Xbox" class="h-6 w-6">
             <span>Xbox</span>
-            <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down" class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                 class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
           </button>
           <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block z-10">
             <div class="container platforms space-y-2">
@@ -99,7 +102,8 @@
           <button class="bg-zinc-800 px-3 py-2 rounded text-sm flex items-center space-x-1 focus:outline-none">
             <img src="./assets/logos/icon-swt.svg" alt="Nintendo" class="h-6 w-6">
             <span>Nintendo</span>
-            <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down" class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
+            <img src="./assets/logos/icon-arrow.svg" alt="Arrow Down"
+                 class="h-4 w-4 ml-2 opacity-40 transform rotate-90">
           </button>
           <div class="absolute hidden bg-zinc-800 text-white p-2 rounded mt-2 group-hover:block z-10">
             <div class="container platforms space-y-2">
@@ -124,7 +128,8 @@
     </div>
     <div class="absolute top-0 right-0">
       <img *ngIf="isLoggedIn" src="./assets/logos/avatar2.svg" alt="user" class="size-20" (click)="toggleDropdown()">
-      <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20" (click)="redirectToLogin()">
+      <img *ngIf="!isLoggedIn" src="./assets/logos/icon-user.svg" alt="user" class="size-20"
+           (click)="redirectToLogin()">
     </div>
 
     <div *ngIf="isLoggedIn && showDropdown" class="bg-zinc-700 p-4 rounded-lg absolute top-14 right-0 mt-1 z-10">
@@ -186,6 +191,7 @@
     </div>
   </main>
 </div>
+</body>
 <ng-template #notLoggedIn>
   <p class="text-red-500">Vous devez être connecté pour accéder à cette page.</p>
   <a href="/login" class="text-blue-500">Se connecter</a>

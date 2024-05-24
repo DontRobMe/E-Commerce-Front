@@ -17,7 +17,7 @@ export interface FactureDtoarray {
   providedIn: 'root'
 })
 export class FactureService {
-  private apiUrl = 'http://localhost:5209/Factures';
+  private apiUrl = 'https://localhost:7056/Factures';
 
   constructor(private http: HttpClient) {}
 
