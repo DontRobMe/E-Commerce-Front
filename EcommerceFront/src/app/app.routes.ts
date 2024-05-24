@@ -9,6 +9,7 @@ import {CompteComponent} from "./pages/compte/compte.component";
 import {ProductComponent} from "./pages/product/product.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import {ConfirmationComponent} from "./pages/confirmation/confirmation.component";
+import {SearchComponent} from "./pages/search/search.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,7 +23,8 @@ export const routes: Routes = [
   { path: 'client/:userId', component: CompteComponent },
   { path: 'confirmation', component: ConfirmationComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'home' },
+  {path: 'search', component: SearchComponent}
 ];
 
 @NgModule({

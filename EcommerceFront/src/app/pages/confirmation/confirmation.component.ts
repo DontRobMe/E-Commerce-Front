@@ -99,13 +99,14 @@ export class ConfirmationComponent implements OnInit {
   }
 
 
-  downloadInvoice() {
+  downloadInvoice(cartId: number) {
     const pdf = this.generateInvoicePdf();
     const blob = new Blob([pdf], { type: 'application/pdf' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'facture.pdf';
     link.click();
+    this.deleteFromCart(this.id, cartId);
   }
 
   redirectTohHome(): void {
@@ -114,7 +115,21 @@ export class ConfirmationComponent implements OnInit {
 
   async downloadInvoiceWithFacture() {
     await this.addFacture();
-    this.downloadInvoice();
+    this.cartItems.forEach(item => {
+      this.downloadInvoice(item.product.produitId);
+    });
     this.redirectTohHome();
+  }
+
+  deleteFromCart  (userid: number ,CartId: number) {
+    this.cartService.deleteCart(userid, CartId).subscribe(
+      (response: any) => {
+        console.log('Delete from cart API response:', response);
+        this.fetchCart(this.cartService.getUserId());
+      },
+      (error) => {
+        console.error('Error deleting from cart:', error);
+      }
+    );
   }
 }
