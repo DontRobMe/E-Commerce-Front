@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from "@angular/router";
+import { environment } from '../../../environments/environment';
 
 export interface Product {
   id: number;
@@ -40,7 +41,7 @@ export interface ProductResponse {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://localhost:7056/Produit/';
+  private apiUrl = `${environment.apiURL}/Produit/`;
 
   constructor(private router: Router, private http: HttpClient) {
   }
