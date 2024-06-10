@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {CartProductDto, Product, WishlistProductDto} from "../produits/produit.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from "@angular/router";
+import { environment } from '../../../environments/environment';
 
 export interface USER {
   id: number;
@@ -27,7 +28,7 @@ export interface UserResponse {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://localhost:7056/Client/';
+  private apiUrl = `${environment.apiURL}/Client/`;
   private cartItems: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router) {

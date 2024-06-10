@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface FactureDto {
   clientId: number;
@@ -17,7 +18,7 @@ export interface FactureDtoarray {
   providedIn: 'root'
 })
 export class FactureService {
-  private apiUrl = 'https://localhost:7056/Factures';
+  private apiUrl = `${environment.apiURL}/Factures`;
 
   constructor(private http: HttpClient) {}
 
